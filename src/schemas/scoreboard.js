@@ -1,27 +1,9 @@
 const { gql } = require("apollo-server");
 
 const typeDefs = gql`
-  type Query {
-    teams: [Team]!
-    team(id: ID!): Team
+  extend type Query {
     scoreboard(date: String!): Scoreboard!
-  }
-
-  # type Mutation {
-  # }
-
-  type Team {
-    isNBAFranchise: Boolean!
-    isAllStar: Boolean!
-    city: String!
-    fullName: String!
-    tricode: String!
-    teamId: String!
-    nickname: String!
-    urlName: String!
-    teamShortName: String!
-    confName: String!
-    divName: String
+    game(date: String!, codeA: String!, codeB: String!): Game!
   }
 
   type Scoreboard {
@@ -44,7 +26,7 @@ const typeDefs = gql`
     name: String!
     isDomestic: Boolean!
     city: String!
-    state: String!
+    state: String
     country: String!
   }
 
