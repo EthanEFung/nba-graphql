@@ -67,7 +67,8 @@ class ScoreboardAPI extends RESTDataSource {
 
   gameTeamReducer(gameTeam) {
     return {
-      team: gameTeam.triCode, // todo, refactor this so that we can pull all the data for the team
+      id: gameTeam.teamId,
+      tricode: gameTeam.triCode,
       teamRecord: {
         win: Number(gameTeam.win),
         loss: Number(gameTeam.loss)

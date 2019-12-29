@@ -3,7 +3,7 @@ const typeDefs = require("./schemas");
 
 const TeamsAPI = require("./datasources/teams");
 const ScoreboardAPI = require("./datasources/scoreboard");
-
+const PlayersAPI = require("./datasources/players");
 const resolvers = require("./resolvers");
 
 const server = new ApolloServer({
@@ -11,7 +11,8 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => ({
     teams: new TeamsAPI(),
-    scoreboard: new ScoreboardAPI()
+    scoreboard: new ScoreboardAPI(),
+    players: new PlayersAPI()
   })
 });
 

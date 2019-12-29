@@ -43,7 +43,8 @@ const typeDefs = gql`
   }
 
   type GameTeam {
-    team: String!
+    team(gameTeam: String): Team!
+    tricode: String
     teamRecord: Record
     seriesRecord: Record
     score: Int

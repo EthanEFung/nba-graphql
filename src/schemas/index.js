@@ -1,6 +1,7 @@
 const { gql } = require("apollo-server");
 const team = require("./team");
 const scoreboard = require("./scoreboard");
+const player = require("./player");
 
 const root = gql`
   type Query {
@@ -12,4 +13,4 @@ const root = gql`
   }
 `;
 
-module.exports = [root, team, scoreboard];
+module.exports = [root, team, scoreboard, player];

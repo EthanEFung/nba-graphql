@@ -13,17 +13,17 @@ class TeamsAPI extends RESTDataSource {
     return response.league.standard.map(team => this.teamReducer(team));
   }
 
-  async getTeam(tricode) {
+  async getTeam(id) {
+    if (!id) return {};
     const response = await this.get("teams.json");
     if (!response.league || !response.league.standard) return {};
-    const team = response.league.standard.find(
-      team => team.tricode === tricode
-    );
+    const team = response.league.standard.find(team => team.teamId === id);
     return this.teamReducer(team);
   }
 
   teamReducer(team) {
     return {
+      id: team.teamId,
       isNBAFranchise: team.isNBAFranchise,
       isAllStar: team.isAllStar,
       city: team.city,

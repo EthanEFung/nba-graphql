@@ -3,11 +3,12 @@ const { gql } = require("apollo-server");
 const typeDefs = gql`
   extend type Query {
     teams: [Team]!
-    team(tricode: String!): Team
+    team(id: String!): Team
   }
   # type Mutation {}
 
   type Team {
+    id: String!
     isNBAFranchise: Boolean!
     isAllStar: Boolean!
     city: String!
