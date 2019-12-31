@@ -8,6 +8,7 @@ const typeDefs = gql`
   # type Mutation {}
 
   type Team {
+    players(team: String): [Player]!
     id: String!
     isNBAFranchise: Boolean!
     isAllStar: Boolean!

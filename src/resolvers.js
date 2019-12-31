@@ -9,7 +9,9 @@ module.exports = {
     game: (_, { date, codeA, codeB }, { dataSources }) =>
       dataSources.scoreboard.getGame(date, codeA, codeB),
     players: (_, __, { dataSources }) => dataSources.players.getPlayers(),
-    player: (_, { id }, { dataSources }) => dataSources.players.getPlayer(id)
+    player: (_, { id }, { dataSources }) => dataSources.players.getPlayer(id),
+    standings: (_, { confName }, { dataSources }) =>
+      dataSources.standings.getConferenceStandings(confName)
   },
   GameTeam: {
     team: (gameTeam, __, { dataSources }) =>
@@ -18,5 +20,13 @@ module.exports = {
   Player: {
     team: (player, __, { dataSources }) =>
       dataSources.teams.getTeam(player.teamId)
+  },
+  Team: {
+    players: (team, __, { dataSources }) =>
+      dataSources.players.getPlayersByTeam(team.id)
+  },
+  Standing: {
+    team: (standing, __, { dataSources }) =>
+      dataSources.teams.getTeam(standing.teamId)
   }
 };

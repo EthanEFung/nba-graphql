@@ -17,7 +17,9 @@ class TeamsAPI extends RESTDataSource {
     if (!id) return {};
     const response = await this.get("teams.json");
     if (!response.league || !response.league.standard) return {};
-    const team = response.league.standard.find(team => team.teamId === id);
+    const team = response.league.standard.find(
+      team => team.teamId && team.teamId === id
+    );
     return this.teamReducer(team);
   }
 

@@ -15,6 +15,12 @@ class PlayersAPI extends RESTDataSource {
       .map(player => this.playerReducer(player));
   }
 
+  async getPlayersByTeam(id) {
+    const response = await this.get(`${getYear()}/players.json`);
+    if (!response || !response.league || !response.league.standard) return [];
+    return response.league.standard.filter(player => player.teamId === id);
+  }
+
   async getPlayer(id) {
     const response = await this.get(`${getYear()}/players.json`);
     if (!response || !response.league || !response.league.standard) return [];

@@ -4,6 +4,7 @@ const typeDefs = require("./schemas");
 const TeamsAPI = require("./datasources/teams");
 const ScoreboardAPI = require("./datasources/scoreboard");
 const PlayersAPI = require("./datasources/players");
+const StandingsAPI = require("./datasources/standings");
 const resolvers = require("./resolvers");
 
 const server = new ApolloServer({
@@ -12,7 +13,8 @@ const server = new ApolloServer({
   dataSources: () => ({
     teams: new TeamsAPI(),
     scoreboard: new ScoreboardAPI(),
-    players: new PlayersAPI()
+    players: new PlayersAPI(),
+    standings: new StandingsAPI()
   })
 });
 
